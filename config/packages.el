@@ -42,10 +42,10 @@
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil)
-  (evil-mode 1)
 
-  ;; Search result in center
   :config
+  (evil-mode 1)
+  ;; Search result in center
   (defun my-center-line (&rest _)
     (evil-scroll-line-to-center nil))
   (advice-add 'evil-search-next :after #'my-center-line)
@@ -55,7 +55,8 @@
 (use-package evil-collection
   :after evil
   :straight t
-  :config
+  :custom (evil-collection-setup-minibuffer t)
+  :init
   (evil-collection-init))
 
 (provide 'packages)
