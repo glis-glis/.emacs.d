@@ -8,7 +8,10 @@
 
 ;;; Code:
 
-;; Straight for package management
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Packages for Package management
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -26,12 +29,20 @@
 
 ;; Use-package for ease of configuration
 (straight-use-package 'use-package)
+(eval-when-compile (require 'use-package))
 
 ;; Needed to remove minor modes from bar
 (use-package delight
   :straight t)
 
-;; Imitate vim
+;; Needed for key bindings
+(use-package general
+  :straight t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Vim imitation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package evil
   :straight t
   :delight undo-tree-mode
@@ -58,6 +69,35 @@
   :custom (evil-collection-setup-minibuffer t)
   :init
   (evil-collection-init))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Packages without keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Color theme
+(use-package eclipse-theme
+  :straight t
+  :init
+  (load-theme 'eclipse t)
+  (set-face-italic 'font-lock-comment-face t))
+
+;; Show indentation with line
+(use-package highlight-indent-guides
+  :straight t
+  :delight
+  :init
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-auto-character-face-perc 30
+        highlight-indent-guides-method 'character))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Packages without keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Dlang
+(use-package d-mode
+  :straight t)
+
 
 (provide 'packages)
 ;;; packages.el ends here
