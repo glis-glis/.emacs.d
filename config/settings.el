@@ -48,6 +48,7 @@
 
 ;; Hooks
 (add-hook 'prog-mode-hook #'outline-minor-mode)     ;; Folding
+(add-hook 'prog-mode-hook 'imenu-add-menubar-index) ;; Jump to functions in menu
 (add-hook 'prog-mode-hook 'imenu-add-menubar-index) ;; Jump to function names
 (add-hook 'lisp-mode-hook
           (lambda () (setq indent-tabs-mode nil)))  ;; Spaces for lisp
