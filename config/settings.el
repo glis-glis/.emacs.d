@@ -1,4 +1,4 @@
-;;; settings.el --- Initialization file for Emacs
+;;; settings.el --- Global Settings for emacs
 ;;; Commentary:
 
 ;; Copyright (C) 2021 Andreas Füglistaler
@@ -54,6 +54,9 @@
           (lambda () (setq indent-tabs-mode nil)))  ;; Spaces for lisp
 (add-hook 'emacs-lisp-mode-hook
           (lambda () (setq indent-tabs-mode nil)))  ;; Spaces for elisp
+(add-hook 'python-mode-hook
+          (lambda () (setq indent-tabs-mode nil     ;; Spaces for python
+                           python-indent-offset 4)))
 (add-hook 'c-mode-common-hook
           #'(lambda () (modify-syntax-entry ?_ "w"))) ;; Underscore does not end identifier
 
