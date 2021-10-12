@@ -82,9 +82,7 @@
 
    "<leader>i" 'imenu
    "<leader>c" 'recompile
-   "<leader>t" 'toggle-truncate-lines
-   )
-  )
+   "<leader>t" 'toggle-truncate-lines))
 
 ;; Some needed stuff for vim imitation
 (use-package evil-collection
@@ -102,7 +100,7 @@
   :init (global-evil-matchit-mode 1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Packages without keybindings
+;;; Appearance Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Color theme
@@ -122,13 +120,75 @@
         highlight-indent-guides-method 'character))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Packages without keybindings
+;;; Completion Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Auto-complete
+(use-package company
+  :straight t
+  :delight
+  :init (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq-default company-dabbrev-downcase 0        ;; Case sensitive
+                company-idle-delay 0              ;; No delay
+                company-minimum-prefix-length 2)  ;; Start after 2 characters
+
+  (add-to-list 'company-backends 'company-math-symbols-unicode)
+  (add-to-list 'company-backends 'company-latex-commands)
+
+  :general
+  (company-active-map
+   "<tab>" 'company-complete-common-or-cycle ;; cycle with tab
+   "<backtab>" 'company-select-previous))
+
+;; Minibuffer completion
+(use-package ivy
+  :straight t
+  :delight
+
+  :init
+  (ivy-mode 1)
+  
+  :general
+  ("<leader>b" 'ivy-switch-buffer))
+
+;; Ivy-enhanced versions of common Emacs
+(use-package counsel
+  :straight t
+  :delight
+  :init
+  (counsel-mode 1)
+  :general
+  ("<leader>e" 'counsel-find-file
+   "<leader>g" 'counsel-git
+   "<leader>r" 'counsel-rg
+   "<leader>z" (lambda () (interactive) (counsel-fzf nil "~"))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Programming Packages
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Syntax checking
+(use-package flycheck
+  :straight t
+  :delight
+  :init
+  (global-flycheck-mode)
+  :general
+  ("<leader>n" 'flycheck-next-error
+   "<leader>p" 'flycheck-previous-error))
 
 ;; Dlang
 (use-package d-mode
   :straight t)
 
+;; Dlang run unittests
+(use-package flycheck-d-unittest
+  :after flycheck
+  :after d-mode
+  :straight t
+  :init
+  (setup-flycheck-d-unittest))
 
 (provide 'packages)
 ;;; packages.el ends here
