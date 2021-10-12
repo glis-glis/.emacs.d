@@ -11,7 +11,6 @@
 ;; (Un)set some modes
 (blink-cursor-mode 0)                ;; Pease don't blink!
 (tool-bar-mode -1)                   ;; No toolbar
-(menu-bar-mode -1)                   ;; No menu
 (global-hl-line-mode t)              ;; Highlight current line
 (show-paren-mode t)                  ;; Show corresponding paren
 (electric-pair-mode 1)               ;; Insert closing paren when opening
