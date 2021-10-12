@@ -53,14 +53,38 @@
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil)
+  (evil-mode 1)
 
   :config
-  (evil-mode 1)
   ;; Search result in center
   (defun my-center-line (&rest _)
     (evil-scroll-line-to-center nil))
   (advice-add 'evil-search-next :after #'my-center-line)
-  (advice-add 'evil-search-previous :after #'my-center-line))
+  (advice-add 'evil-search-previous :after #'my-center-line)
+
+  ;; leader-key
+  (evil-set-leader nil (kbd "C-,"))
+  ;; set leader key in normal state
+  (evil-set-leader 'normal (kbd ","))
+
+  :general ;; General emacs- and evil- keybindings
+  ("<leader>v" 'evil-window-vsplit
+   "<leader>h" 'evil-window-split
+   "<leader><tab>" 'evil-window-next
+   "<leader><backtab>" 'evil-window-prev
+
+   "<leader>w" 'save-buffer
+   "<leader>q" 'evil-quit
+   "<leader>k" 'kill-this-buffer
+   "<leader>K" ;; kill all buffers
+   (lambda () (interactive)
+     (mapc 'kill-buffer (buffer-list)) (delete-other-windows))
+
+   "<leader>i" 'imenu
+   "<leader>c" 'recompile
+   "<leader>t" 'toggle-truncate-lines
+   )
+  )
 
 ;; Some needed stuff for vim imitation
 (use-package evil-collection
@@ -69,6 +93,13 @@
   :custom (evil-collection-setup-minibuffer t)
   :init
   (evil-collection-init))
+
+;; Jump from opening keyword to closing keyword
+(use-package evil-matchit
+  :after evil
+  :straight t
+  :delight
+  :init (global-evil-matchit-mode 1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Packages without keybindings
