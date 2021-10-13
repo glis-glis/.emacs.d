@@ -153,6 +153,12 @@
   :general
   ("<leader>b" 'ivy-switch-buffer))
 
+(use-package swiper
+  :straight t
+  :general
+  (:states 'motion
+   "/" 'swiper-isearch))
+
 ;; Ivy-enhanced versions of common Emacs
 (use-package counsel
   :straight t
