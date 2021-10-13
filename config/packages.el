@@ -129,6 +129,7 @@
   :delight
   :init (add-hook 'after-init-hook 'global-company-mode)
   :config
+  (setq company-backends (delete 'company-semantic company-backends))
   (setq-default company-dabbrev-downcase 0        ;; Case sensitive
                 company-idle-delay 0              ;; No delay
                 company-minimum-prefix-length 2)  ;; Start after 2 characters
@@ -163,6 +164,14 @@
    "<leader>g" 'counsel-git
    "<leader>r" 'counsel-rg
    "<leader>z" (lambda () (interactive) (counsel-fzf nil "~"))))
+
+;; Find defintion
+(use-package counsel-etags
+  :straight t
+  :general
+  (:states 'motion
+   "gt" 'counsel-etags-find-tag-at-point
+   "gb" 'pop-tag-mark))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Programming Packages
