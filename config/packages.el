@@ -45,7 +45,6 @@
 
 (use-package evil
   :straight t
-  :delight undo-tree-mode
 
   :custom
   (evil-want-C-u-scroll t)
@@ -99,6 +98,16 @@
   :straight t
   :delight
   :init (global-evil-matchit-mode 1))
+
+;; Do redu correctiyl
+(use-package undo-fu
+  :straight t
+  :general
+  (:states 'normal
+   "u" 'undo-fu-only-undo
+   "C-r" 'undo-fu-only-redo
+   "U" 'undo-fu-only-redo))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Appearance Packages
@@ -158,7 +167,7 @@
   :straight t
   :general
   (:states 'motion
-   "/" 'swiper-isearch))
+   "/" 'swiper))
 
 ;; Ivy-enhanced versions of common Emacs
 (use-package counsel
