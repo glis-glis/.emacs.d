@@ -181,14 +181,6 @@
    "<leader>r" 'counsel-rg
    "<leader>z" (lambda () (interactive) (counsel-fzf nil "~"))))
 
-;; Find defintion
-(use-package counsel-etags
-  :straight t
-  :general
-  (:states 'motion
-   "gt" 'counsel-etags-find-tag-at-point
-   "gb" 'pop-tag-mark))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Programming Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -212,6 +204,7 @@
    :keymaps 'c-mode-base-map
    "=" 'clang-format-region))
 
+
 ;; Dlang
 (use-package d-mode
   :straight t)
@@ -223,6 +216,23 @@
   :straight t
   :init
   (setup-flycheck-d-unittest))
+
+;; Lua
+(use-package lua-mode
+  :straight t)
+
+;; Lsp mode
+(use-package lsp-mode
+  :straight t
+  :config
+  (add-hook 'c-mode-common-hook #'lsp)
+  (add-hook 'd-mode-hook  #'lsp)
+  (add-hook 'lua-mode-hook  #'lsp)
+  (add-hook 'sh-mode-hook   #'lsp)
+  (add-hook 'python-mode-hook #'lsp)
+  :init
+  (setq lsp-modeline-diagnostics-enable nil))
+
 
 (provide 'packages)
 ;;; packages.el ends here
