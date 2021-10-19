@@ -33,7 +33,12 @@
 
 ;; Needed to remove minor modes from bar
 (use-package delight
-  :straight t)
+  :straight t
+  :config
+  (delight '((outline-minor-mode nil "outline")
+             (abbrev-mode nil "abbrev")
+             (eldoc-mode nil "ElDoc")
+             (counsel-mode nil "counsel"))))
 
 ;; Needed for key bindings
 (use-package general
@@ -62,8 +67,7 @@
   (advice-add 'evil-search-previous :after #'my-center-line)
 
   ;; leader-key
-  (evil-set-leader nil (kbd "C-,"))
-  ;; set leader key in normal state
+  (evil-set-leader 'insert (kbd "C-,"))
   (evil-set-leader 'normal (kbd ","))
 
   :general ;; General emacs- and evil- keybindings
@@ -82,13 +86,17 @@
    "<leader>i" 'imenu
    "<leader>f" 'ff-find-other-file
    "<leader>c" 'recompile
-   "<leader>t" 'toggle-truncate-lines))
+   "<leader>t" 'toggle-truncate-lines)
+  (:states 'motion
+   "gb" 'pop-global-mark))
 
 ;; Some needed stuff for vim imitation
 (use-package evil-collection
   :after evil
   :straight t
-  :custom (evil-collection-setup-minibuffer t)
+  :custom
+  (evil-collection-setup-minibuffer t)
+  (evil-collection-want-unimpaired-p nil)
   :init
   (evil-collection-init))
 
@@ -99,7 +107,7 @@
   :delight
   :init (global-evil-matchit-mode 1))
 
-;; Do redu correctiyl
+;; Do redu correctly
 (use-package undo-fu
   :straight t
   :general
@@ -157,6 +165,10 @@
   :straight t
   :delight
 
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "%d/%d ")
+
   :init
   (ivy-mode 1)
   
@@ -178,7 +190,7 @@
   :general
   ("<leader>e" 'counsel-find-file
    "<leader>g" 'counsel-git
-   "<leader>r" 'counsel-rg
+   "<leader>r" 'counsel-git-grep
    "<leader>z" (lambda () (interactive) (counsel-fzf nil "~"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
