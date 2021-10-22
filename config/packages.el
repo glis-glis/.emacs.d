@@ -69,6 +69,7 @@
   ;; leader-key
   (evil-set-leader 'insert (kbd "C-,"))
   (evil-set-leader 'normal (kbd ","))
+  (evil-set-leader 'motion (kbd ","))
 
   :general ;; General emacs- and evil- keybindings
   ("<leader>v" 'evil-window-vsplit
@@ -85,8 +86,7 @@
 
    "<leader>i" 'imenu
    "<leader>f" 'ff-find-other-file
-   "<leader>c" 'recompile
-   "<leader>t" 'toggle-truncate-lines)
+   "<leader>c" 'recompile)
   (:states 'motion
    "gb" 'pop-global-mark))
 
@@ -138,7 +138,7 @@
         highlight-indent-guides-method 'character))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Completion Packages
+;;; Completion and outline Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Auto-complete
@@ -193,6 +193,20 @@
    "<leader>r" 'counsel-git-grep
    "<leader>z" (lambda () (interactive) (counsel-fzf nil "~"))))
 
+(use-package treemacs
+  :straight t
+  :init
+  :config
+  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+  (treemacs-follow-mode t)
+  (treemacs-filewatch-mode t)
+  :general
+  ("<leader>t" 'treemacs))
+
+(use-package treemacs-evil
+  :straight t
+  :after (treemacs evil))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Programming Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -244,6 +258,9 @@
   (add-hook 'python-mode-hook #'lsp)
   :init
   (setq lsp-modeline-diagnostics-enable nil))
+
+(use-package smart-compile
+  :straight t)
 
 
 (provide 'packages)
