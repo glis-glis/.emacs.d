@@ -221,16 +221,6 @@
   ("<leader>n" 'flycheck-next-error
    "<leader>p" 'flycheck-previous-error))
 
-;; Format source code
-(use-package clang-format
-  :straight t
-  :hook c-mode-common-hook
-  :general
-  (:states 'motion
-   :keymaps 'c-mode-base-map
-   "=" 'clang-format-region))
-
-
 ;; Dlang
 (use-package d-mode
   :straight t)
