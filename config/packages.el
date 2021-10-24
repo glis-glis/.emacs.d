@@ -252,6 +252,8 @@
 (use-package smart-compile
   :straight t)
 
+(use-package cmake-mode
+  :straight t)
 
 (provide 'packages)
 ;;; packages.el ends here
