@@ -80,9 +80,7 @@
    "<leader>w" 'save-buffer
    "<leader>q" 'evil-quit
    "<leader>k" 'kill-this-buffer
-   "<leader>K" ;; kill all buffers
-   (lambda () (interactive)
-     (mapc 'kill-buffer (buffer-list)) (delete-other-windows))
+   "<leader>K" 'save-buffers-kill-emacs
 
    "<leader>i" 'imenu
    "<leader>f" 'ff-find-other-file
