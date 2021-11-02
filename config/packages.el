@@ -83,7 +83,7 @@
    "<leader>K" 'save-buffers-kill-emacs
 
    "<leader>i" 'imenu
-   "<leader>f" 'ff-find-other-file
+   "<leader>s" 'ff-find-other-file
    "<leader>c" 'recompile)
   (:states 'motion
    "gb" 'pop-global-mark))
@@ -187,8 +187,8 @@
   (counsel-mode 1)
   :general
   ("<leader>e" 'counsel-find-file
-   "<leader>g" 'counsel-git
-   "<leader>r" 'counsel-git-grep
+   "<leader>f" 'counsel-git
+   "<leader>g" 'counsel-git-grep
    "<leader>z" (lambda () (interactive) (counsel-fzf nil "~"))))
 
 (use-package treemacs
@@ -245,7 +245,9 @@
   (add-hook 'sh-mode-hook   #'lsp)
   (add-hook 'python-mode-hook #'lsp)
   :init
-  (setq lsp-modeline-diagnostics-enable nil))
+  (setq lsp-modeline-diagnostics-enable nil)
+  :general
+  ("<leader>r" 'lsp-rename))
 
 (use-package smart-compile
   :straight t)
