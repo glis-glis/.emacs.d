@@ -164,8 +164,7 @@
   :delight
 
   :config
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format "%d/%d ")
+  (setq ivy-count-format "%d/%d ")
 
   :init
   (ivy-mode 1)
@@ -238,6 +237,8 @@
 ;; Lsp mode
 (use-package lsp-mode
   :straight t
+  ;:bind
+  ;("<leader> r" . lsp-rename)
   :config
   (add-hook 'c-mode-common-hook #'lsp)
   (add-hook 'd-mode-hook  #'lsp)
@@ -245,9 +246,7 @@
   (add-hook 'sh-mode-hook   #'lsp)
   (add-hook 'python-mode-hook #'lsp)
   :init
-  (setq lsp-modeline-diagnostics-enable nil)
-  :general
-  ("<leader>r" 'lsp-rename))
+  (setq lsp-modeline-diagnostics-enable nil))
 
 (use-package smart-compile
   :straight t)
