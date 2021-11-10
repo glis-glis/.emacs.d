@@ -79,8 +79,11 @@
 
    "<leader>w" 'save-buffer
    "<leader>q" 'evil-quit
+   "<leader>Q" 'save-buffers-kill-emacs
    "<leader>k" 'kill-this-buffer
-   "<leader>K" 'save-buffers-kill-emacs
+   "<leader>K" (lambda()
+                 (interactive)
+                 (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
 
    "<leader>i" 'imenu
    "<leader>s" 'ff-find-other-file
