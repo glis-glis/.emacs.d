@@ -76,6 +76,9 @@
    "<leader>h" 'evil-window-split
    "<leader><tab>" 'evil-window-next
    "<leader><backtab>" 'evil-window-prev
+   "<leader>>" 'evil-window-increase-width
+   "<leader><" 'evil-window-decrease-width
+   "<leader>=" 'balance-windows
 
    "<leader>w" 'save-buffer
    "<leader>q" 'evil-quit
