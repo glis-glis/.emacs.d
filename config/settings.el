@@ -38,6 +38,7 @@
 
 ;; Set some defaults
 (setq-default tab-width 8
+              word-wrap t              ;; Don't split words in two
               indent-tabs-mode t       ;; Use tabs to indent
               c-basic-offset 8         ;; 8 spaces (1 tab)
               c-default-style "linux"  ;; Better than GNU
