@@ -61,6 +61,8 @@
 (add-hook 'c-mode-common-hook
           #'(lambda () (modify-syntax-entry ?_ "w"))) ;; Underscore does not end identifier
 
+(add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
+
 ;; Set font to Fantsaque Mono
 (set-face-attribute 'default nil
                     :family "Fantasque Sans Mono"
