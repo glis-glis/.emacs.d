@@ -260,5 +260,11 @@
 (use-package cmake-mode
   :straight t)
 
+(use-package magit
+  :straight t
+  :general
+  (:states 'motion
+   "gs" 'magit-status))
+
 (provide 'packages)
 ;;; packages.el ends here
