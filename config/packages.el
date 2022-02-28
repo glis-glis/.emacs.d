@@ -254,17 +254,14 @@
   :init
   (setq lsp-modeline-diagnostics-enable nil))
 
+(use-package lsp-treemacs
+  :straight t)
+
 (use-package smart-compile
   :straight t)
 
 (use-package cmake-mode
   :straight t)
-
-(use-package magit
-  :straight t
-  :general
-  (:states 'motion
-   "gs" 'magit-status))
 
 (provide 'packages)
 ;;; packages.el ends here
