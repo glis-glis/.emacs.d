@@ -263,5 +263,8 @@
 (use-package cmake-mode
   :straight t)
 
+(use-package racket-mode
+  :straight t)
+
 (provide 'packages)
 ;;; packages.el ends here
