@@ -37,10 +37,10 @@
 (load custom-file 'noerror)                 ;; load custom-file as defined above
 
 ;; Set some defaults
-(setq-default tab-width 8
+(setq-default tab-width 4
               word-wrap t              ;; Don't split words in two
               indent-tabs-mode t       ;; Use tabs to indent
-              c-basic-offset 8         ;; 8 spaces (1 tab)
+              c-basic-offset 4         ;; 4 spaces (1 tab)
               c-default-style "linux"  ;; Better than GNU
 
               display-line-numbers 'visual ;;
