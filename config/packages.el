@@ -243,8 +243,9 @@
 ;; Lsp mode
 (use-package lsp-mode
   :straight t
-  ;:bind
-  ;("<leader> r" . lsp-rename)
+  :bind
+  (:map lsp-mode-map
+        ("<leader> r" . lsp-rename))
   :config
   (add-hook 'c-mode-common-hook #'lsp)
   (add-hook 'd-mode-hook  #'lsp)
@@ -264,7 +265,16 @@
   :straight t)
 
 (use-package racket-mode
-  :straight t)
+  :straight t
+  :init
+  (add-hook 'racket-xp-mode-hook
+            (lambda ()
+              (remove-hook 'pre-redisplay-functions
+                           #'racket-xp-pre-redisplay
+			               t)))
+  :config
+  (add-hook 'racket-mode-hook #'racket-xp-mode))
+
 
 (provide 'packages)
 ;;; packages.el ends here
