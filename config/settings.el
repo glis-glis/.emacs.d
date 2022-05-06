@@ -73,4 +73,4 @@
                     :width 'normal)
 
 (provide 'settings)
-;;; init.el ends here
+;;; settings.el ends here
