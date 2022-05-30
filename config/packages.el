@@ -246,6 +246,7 @@
   :bind
   (:map lsp-mode-map
         ("<leader> r" . lsp-rename)
+        ("<leader> a" . lsp-execute-code-action)
         ("g r" . lsp-find-references))
   :config
   (add-hook 'c-mode-common-hook #'lsp)
