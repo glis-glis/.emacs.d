@@ -245,7 +245,8 @@
   :straight t
   :bind
   (:map lsp-mode-map
-        ("<leader> r" . lsp-rename))
+        ("<leader> r" . lsp-rename)
+        ("g r" . lsp-find-references))
   :config
   (add-hook 'c-mode-common-hook #'lsp)
   (add-hook 'd-mode-hook  #'lsp)
