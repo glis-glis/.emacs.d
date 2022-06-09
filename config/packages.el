@@ -254,8 +254,13 @@
   (add-hook 'lua-mode-hook  #'lsp)
   (add-hook 'sh-mode-hook   #'lsp)
   (add-hook 'python-mode-hook #'lsp)
+  (add-hook 'tex-mode-hook #'lsp)
+  (add-hook 'latex-mode-hook #'lsp)
   :init
   (setq lsp-modeline-diagnostics-enable nil))
+
+(use-package lsp-latex
+  :straight t)
 
 (use-package lsp-treemacs
   :straight t)
