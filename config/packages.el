@@ -271,6 +271,9 @@
 (use-package cmake-mode
   :straight t)
 
+(use-package wgrep
+  :straight t)
+
 (use-package racket-mode
   :straight t
   :init
