@@ -9,7 +9,7 @@
 ;;; Code:
 
 ;; (Un)set some modes
-(blink-cursor-mode 0)                ;; Pease don't blink!
+(blink-cursor-mode 0)                ;; Please don't blink!
 (tool-bar-mode -1)                   ;; No toolbar
 (global-hl-line-mode t)              ;; Highlight current line
 (show-paren-mode t)                  ;; Show corresponding paren
@@ -62,15 +62,6 @@
           #'(lambda () (modify-syntax-entry ?_ "w"))) ;; Underscore does not end identifier
 
 (add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
-
-;; Set font to Fantsaque Mono
-(set-face-attribute 'default nil
-                    :family "Fantasque Sans Mono"
-                    :foundry "PfEd"
-                    :slant 'normal
-                    :weight 'normal
-                    :height 130
-                    :width 'normal)
 
 (provide 'settings)
 ;;; settings.el ends here
