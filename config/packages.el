@@ -194,7 +194,7 @@
   ("<leader>e" 'counsel-find-file
    "<leader>f" 'counsel-git
    "<leader>g" 'counsel-git-grep
-   "<leader>z" (lambda () (interactive) (counsel-fzf nil "~"))))
+   "<leader>z" (lambda () (interactive) (counsel-fzf nil "/data"))))
 
 (use-package treemacs
   :straight t
