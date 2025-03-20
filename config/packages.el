@@ -240,6 +240,12 @@
 (use-package lua-mode
   :straight t)
 
+;; Raku
+(use-package raku-mode
+  :ensure t
+  :defer t
+  :straight t)
+
 ;; Lsp mode
 (use-package lsp-mode
   :straight t
