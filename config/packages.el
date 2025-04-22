@@ -83,7 +83,7 @@
    "<leader>w" 'save-buffer
    "<leader>q" 'evil-quit
    "<leader>Q" 'save-buffers-kill-emacs
-   "<leader>k" 'kill-this-buffer
+   "<leader>k" 'kill-current-buffer
    "<leader>K" (lambda()
                  (interactive)
                  (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
