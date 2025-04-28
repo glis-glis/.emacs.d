@@ -263,8 +263,7 @@
   (add-hook 'tex-mode-hook #'lsp)
   (add-hook 'latex-mode-hook #'lsp)
   :init
-  (setq lsp-modeline-diagnostics-enable nil)
-  (setq lsp-clangd-version "18.1.6"))
+  (setq lsp-modeline-diagnostics-enable nil))
 
 (use-package lsp-latex
   :straight t)
